@@ -1,3 +1,5 @@
+use std::string;
+
 fn main() {
     //     println!("Hello, world!");
     //     let objective: Option<i32> = Some(1);
@@ -18,6 +20,27 @@ fn main() {
         3 => println!("3"),
         4 => println!("4"),
         _ => println!("misc"),
+    }
+
+    let p = Person {
+        name: String::from("Taro"),
+        age: 20,
+    };
+    p.say_name().say_age();
+}
+
+struct Person {
+    name: String,
+    age: u32,
+}
+impl Person {
+    fn say_name(&self) -> &Self {
+        println!("I am {}", self.name);
+        self
+    }
+    fn say_age(&self) -> &Self {
+        println!("I am {} yesars old.", self.age);
+        self
     }
 }
 
