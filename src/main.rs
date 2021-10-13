@@ -10,8 +10,33 @@ fn main() {
     let cat = Cat {};
     show_animal_data(dog);
     show_animal_data(cat);
+
+    let i: i32 = 4;
+    match i {
+        1 => println!("1"),
+        2 => println!("2"),
+        3 => println!("3"),
+        4 => println!("4"),
+        _ => println!("misc"),
+    }
 }
 
+struct Iter {
+    current: usize,
+    max: usize,
+}
+
+impl Iterator for Iter {
+    type Item = usize;
+    fn next(&mut self) -> Option<usize> {
+        self.current += 1;
+        if self.current - 1 < self.max {
+            Some(self.current - 1)
+        } else {
+            None
+        }
+    }
+}
 trait Animal {
     // トレイトは型クラス
     fn lifespan(&self) -> u32;

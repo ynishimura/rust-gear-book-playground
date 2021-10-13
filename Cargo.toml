@@ -5,3 +5,6 @@ authors = ["ynishimura <ynishimura0922@gmail.com>"]
 edition = "2018"
 
 [features]
+
+[dependencies]
+fstrings = "0.2.3"
