@@ -27,8 +27,41 @@ fn main() {
         age: 20,
     };
     p.say_name().say_age();
+
+    let mut p = HappyPerson {
+        name: "John".to_string(),
+        state: Emotion::Happy,
+    };
+    println!("{}", p.get_happy())
 }
 
+enum Emotion {
+    Anger,
+    Happy,
+}
+
+trait Emotional {
+    fn get_happy(&mut self) -> String;
+    fn get_anger(&mut self) -> String;
+    fn tall_state(&mut self) -> String;
+}
+
+struct HappyPerson {
+    name: String,
+    state: Emotion,
+}
+
+impl Emotional for HappyPerson {
+    fn get_anger(&mut self) -> String {
+        unimplemented!()
+    }
+    fn get_happy(&mut self) -> String {
+        format!("{} is always happy.", self.name)
+    }
+    fn tall_state(&mut self) -> String {
+        todo!()
+    }
+}
 struct Person {
     name: String,
     age: u32,
