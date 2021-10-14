@@ -1,4 +1,4 @@
-use std::string;
+use rust_gear_book_playground::module_a;
 
 fn main() {
     //     println!("Hello, world!");
@@ -8,6 +8,8 @@ fn main() {
     //         Some(x) => println!("奇数です: {}", x),
     //         None => println!("値がありません"),
     //     }
+    module_a::func_a();
+    // A は一致比較可能
     let dog = Dog {};
     let cat = Cat {};
     show_animal_data(dog);
