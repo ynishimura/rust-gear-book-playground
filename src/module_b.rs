@@ -36,4 +36,26 @@ pub fn func_b() {
     for bird in bird_vec {
         bird.tweet();
     }
+
+    let mut important_data = "Hello World".to_string();
+
+    calc_data(&important_data);
+    println!("{}", &important_data);
+
+    let mut x = 5;
+    let y = &x;
+    let z = &mut x;
+
+    dbg!(z);
+    dbg!(x);
+}
+
+struct Color {
+    r: i32,
+    g: i32,
+    b: i32,
+}
+
+fn calc_data(data: &String) {
+    println!("{}", data);
 }
