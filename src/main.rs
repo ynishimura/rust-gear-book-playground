@@ -1,4 +1,5 @@
 use rust_gear_book_playground::module_a;
+use rust_gear_book_playground::module_b;
 
 fn main() {
     //     println!("Hello, world!");
@@ -9,6 +10,7 @@ fn main() {
     //         None => println!("値がありません"),
     //     }
     module_a::func_a();
+    module_b::func_b();
     // A は一致比較可能
     let dog = Dog {};
     let cat = Cat {};
