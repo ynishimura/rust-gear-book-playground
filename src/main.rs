@@ -1,6 +1,7 @@
 use rust_gear_book_playground::module_a;
 use rust_gear_book_playground::module_b;
 use rust_gear_book_playground::module_c;
+use rust_gear_book_playground::share_thread;
 
 fn main() {
     //     println!("Hello, world!");
@@ -13,6 +14,7 @@ fn main() {
     module_a::func_a();
     module_b::func_b();
     module_c::func_c();
+    share_thread::func_d();
     // A は一致比較可能
     let dog = Dog {};
     let cat = Cat {};
