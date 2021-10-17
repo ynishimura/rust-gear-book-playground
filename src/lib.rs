@@ -1,3 +1,4 @@
+pub mod futures;
 pub mod message_passing;
 pub mod module_a;
 pub mod module_b;
