@@ -1,3 +1,4 @@
+use rust_gear_book_playground::message_passing;
 use rust_gear_book_playground::module_a;
 use rust_gear_book_playground::module_b;
 use rust_gear_book_playground::module_c;
@@ -15,6 +16,7 @@ fn main() {
     module_b::func_b();
     module_c::func_c();
     share_thread::func_d();
+    message_passing::func_e();
     // A は一致比較可能
     let dog = Dog {};
     let cat = Cat {};
