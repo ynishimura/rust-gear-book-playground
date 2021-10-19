@@ -25,3 +25,12 @@ fn assert_sample() {
 fn test_panic() {
     panic!("expected panic");
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn it_works() {
+        assert_eq!(add(2,2),4);
+    }
+}
