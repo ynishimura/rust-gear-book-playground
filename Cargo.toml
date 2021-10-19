@@ -10,3 +10,4 @@ edition = "2018"
 fstrings = "0.2.3"
 futures = "0.3.17"
 tokio = { version = "0.2.21", features = ["macros"]}
+rand = "0.7.3"
