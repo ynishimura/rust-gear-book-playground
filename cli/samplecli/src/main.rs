@@ -1,4 +1,6 @@
-use clap::{AppSettings, Parser};
+use clap::Parser;
+use std::fs::File;
+use std::io::{BufRead, BufReader};
 
 #[derive(Parser,Debug)]
 #[clap(
@@ -17,15 +19,28 @@ struct Opts {
     // num: i32,
 
     // Formulas written in RPN
-    #[clap(name = "FILE")]
-    formula_file: Option<String>,
+    #[clap(name = "FILE", default_value = "default.txt")]
+    formula_file: String,
 }
 fn main() {
     let opts = Opts::parse();
-    match opts.formula_file {
-        Some(file) => println!("File specified: {}", file),
-        None => println!("No file specified."),
-    }
-    println!("Is verbosity specified?: {}", opts.verbose);
+
+    if let path = opts.formula_file {
+        let f = File::open(path).unwrap();
+        let reader = BufReader::new(f);
+
+        for line in reader.lines() {
+            let line = line.unwrap();
+            println!("{}", line);
+        }
+    } else {
+                // not file
+                println!("No file is specified");
+            }
+    // match opts.formula_file {
+    //     Some(file) => println!("File specified: {}", file),
+    //     None => println!("No file specified."),
+    // }
+    // println!("Is verbosity specified?: {}", opts.verbose);
 
 }
