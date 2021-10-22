@@ -19,13 +19,13 @@ struct Opts {
     // num: i32,
 
     // Formulas written in RPN
-    #[clap(name = "FILE", default_value = "default.txt")]
-    formula_file: String,
+    #[clap(name = "FILE")]
+    formula_file: Option<String>,
 }
 fn main() {
     let opts = Opts::parse();
 
-    if let path = opts.formula_file {
+    if let Some(path) = opts.formula_file {
         let f = File::open(path).unwrap();
         let reader = BufReader::new(f);
 
