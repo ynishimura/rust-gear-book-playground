@@ -41,7 +41,7 @@ fn main() {
     // println!("Is verbosity specified?: {}", opts.verbose);
 }
 
-fn run(reader: BufReader<File>, verbose:bool) {
+fn run<Reader: BufRead>(reader: Reader, verbose:bool) {
     for line in reader.lines() {
         let line = line.unwrap();
         println!("{}", line);
