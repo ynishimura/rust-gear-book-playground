@@ -19,7 +19,7 @@ impl RpnCalculator {
         let mut stack = Vec::new();
 
         while let Some(token) = tokens.pop() {
-            if let Ok(x) = token.parse::<i32>() {
+            if let Ok(x) = token.parse::<i32>() { // 取り出した値が数値のときpush
                 stack.push(x);
             } else {
                 let y = stack.pop().expect("invalid syntax");
@@ -35,7 +35,7 @@ impl RpnCalculator {
                 stack.push(res);
             }
 
-            if self.0 {
+            if self.0 { // -vを指定したかどうか判定するため、RpnCalculatorの持つ無名のフィールドを取得、self.0は何番目のフィールドかを表す
                 println!("{:?} {:?}", tokens, stack);
             }
         }
