@@ -2,7 +2,7 @@ use clap::Parser;
 use std::fs::File;
 use std::io::{stdin, BufRead, BufReader};
 
-enum MyError  {
+enum MyError {
     Io(std::io::Error),
     Num(std::num::ParseIntError),
 }
@@ -10,7 +10,7 @@ enum MyError  {
 struct RpnCalculator(bool);
 
 impl RpnCalculator {
-    pub fn new(verbose:bool) -> Self {
+    pub fn new(verbose: bool) -> Self {
         Self(verbose)
     }
 
@@ -23,7 +23,8 @@ impl RpnCalculator {
         let mut stack = Vec::new();
 
         while let Some(token) = tokens.pop() {
-            if let Ok(x) = token.parse::<i32>() { // 取り出した値が数値のときpush
+            if let Ok(x) = token.parse::<i32>() {
+                // 取り出した値が数値のときpush
                 stack.push(x);
             } else {
                 let y = stack.pop().expect("invalid syntax");
@@ -39,7 +40,8 @@ impl RpnCalculator {
                 stack.push(res);
             }
 
-            if self.0 { // -vを指定したかどうか判定するため、RpnCalculatorの持つ無名のフィールドを取得、self.0は何番目のフィールドかを表す
+            if self.0 {
+                // -vを指定したかどうか判定するため、RpnCalculatorの持つ無名のフィールドを取得、self.0は何番目のフィールドかを表す
                 println!("{:?} {:?}", tokens, stack);
             }
         }
@@ -51,7 +53,7 @@ impl RpnCalculator {
     }
 }
 
-#[derive(Parser,Debug)]
+#[derive(Parser, Debug)]
 #[clap(
     name = "My RPN probram",
     version = "1.0.0",
@@ -60,7 +62,7 @@ impl RpnCalculator {
 )]
 struct Opts {
     // set the level of verbosity
-    #[clap(short,long)]
+    #[clap(short, long)]
     verbose: bool,
 
     // // Number
@@ -82,7 +84,7 @@ fn main() {
         let stdin = stdin();
         let reader = stdin.lock();
         run(reader, opts.verbose);
-            }
+    }
     // match opts.formula_file {
     //     Some(file) => println!("File specified: {}", file),
     //     None => println!("No file specified."),
@@ -90,7 +92,7 @@ fn main() {
     // println!("Is verbosity specified?: {}", opts.verbose);
 }
 
-fn run<Reader: BufRead>(reader: Reader, verbose:bool) {
+fn run<Reader: BufRead>(reader: Reader, verbose: bool) {
     let calc = RpnCalculator::new(verbose);
 
     for line in reader.lines() {
@@ -123,6 +125,6 @@ mod tests {
     fn test_ng() {
         let calc = RpnCalculator::new(false);
 
-        calc.eval("1 1 ^");        
+        calc.eval("1 1 ^");
     }
 }
