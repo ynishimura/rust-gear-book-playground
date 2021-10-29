@@ -2,6 +2,10 @@ use clap::Parser;
 use std::fs::File;
 use std::io::{stdin, BufRead, BufReader};
 
+enum MyError  {
+    Io(std::io::Error),
+    Num(std::num::ParseIntError),
+}
 //　今回はオプションが一つしかないので、無名で作成
 struct RpnCalculator(bool);
 
