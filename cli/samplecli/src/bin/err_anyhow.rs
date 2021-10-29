@@ -1,3 +1,4 @@
+//use anyhow::{bail, ensure, Context, Result};
 use anyhow::{Context, Result};
 
 fn get_int_from_file() -> Result<i32> {
@@ -5,6 +6,12 @@ fn get_int_from_file() -> Result<i32> {
 
     let num_str = std::fs::read_to_string(path)
         .with_context(|| format!("failed to read string from {}", path))?;
+
+    // if num_str.len() >= 10 {
+    //     bail!("it may be too large number");
+    // }
+    // 第一引数の条件がfalseのとき表示するエラー
+    // ensure!(num_str.starts_with("1"), "first digit is not 1");
 
     num_str
         .trim()
